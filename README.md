@@ -8,6 +8,7 @@ This project involves creating a data model using Apache Cassandra for Sparkify,
 ## Table of Contents
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -31,6 +32,13 @@ To run this project, you need to have Docker and Docker Compose installed on you
     ```sh
     docker-compose up --build
     ```
+
+5. **Access the Jupyter Notebook**: Once the containers are up and running, you can access the Jupyter Notebook by navigating to `http://localhost:8888` in your web browser. Use the token provided in the terminal output to log in.
+
+## Usage
+
+To use this notebook, open the `Project_1B_ Project_Template.ipynb` file in the Jupyter Notebook interface and run the cells sequentially.
+
 
 ## Contributing
 
