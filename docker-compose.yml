@@ -1,0 +1,57 @@
+version: '3.7'
+
+services:
+  cassandra-node1:
+    image: cassandra:latest
+    container_name: cassandra-node1
+    environment:
+      CASSANDRA_CLUSTER_NAME: "MyCluster"
+      CASSANDRA_DC: "datacenter1"
+      CASSANDRA_RACK: "rack1"
+      CASSANDRA_SEEDS: "cassandra-node1"
+      CASSANDRA_START_RPC: "true"
+      CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
+    volumes:
+      - ./volumes/cassandra-data/cassandra-node1:/var/lib/cassandra
+    networks:
+      cassandra-network:
+        ipv4_address: 172.18.0.2
+
+  # cassandra-node2:
+  #   image: cassandra:latest
+  #   container_name: cassandra-node2
+  #   environment:
+  #     CASSANDRA_CLUSTER_NAME: "MyCluster"
+  #     CASSANDRA_DC: "datacenter1"
+  #     CASSANDRA_RACK: "rack1"
+  #     CASSANDRA_SEEDS: "cassandra-node1"
+  #     CASSANDRA_START_RPC: "true"
+  #     CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
+  #   volumes:
+  #     - ./volumes/cassandra-data/cassandra-node2:/var/lib/cassandra
+  #   networks:
+  #     cassandra-network:
+  #       ipv4_address: 172.18.0.3
+
+  # cassandra-node3:
+  #   image: cassandra:latest
+  #   container_name: cassandra-node3
+  #   environment:
+  #     CASSANDRA_CLUSTER_NAME: "MyCluster"
+  #     CASSANDRA_DC: "datacenter1"
+  #     CASSANDRA_RACK: "rack1"
+  #     CASSANDRA_SEEDS: "cassandra-node1"
+  #     CASSANDRA_START_RPC: "true"
+  #     CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
+  #   volumes:
+  #     - ./volumes/cassandra-data/cassandra-node3:/var/lib/cassandra
+  #   networks:
+  #     cassandra-network:
+  #       ipv4_address: 172.18.0.4
+
+networks:
+  cassandra-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
