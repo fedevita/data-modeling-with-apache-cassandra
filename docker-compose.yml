@@ -12,7 +12,7 @@ services:
       JUPYTER_ENABLE_LAB: "yes"
     networks:
       cassandra-network:
-        ipv4_address: 172.18.0.5
+        ipv4_address: 193.18.0.5
 
   cassandra-node1:
     image: cassandra:latest
@@ -26,11 +26,11 @@ services:
       CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
     networks:
       cassandra-network:
-        ipv4_address: 172.18.0.2
+        ipv4_address: 193.18.0.2
 
 networks:
   cassandra-network:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 193.18.0.0/16
